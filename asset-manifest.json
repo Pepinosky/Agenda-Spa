@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/Agenda-Spa/static/css/main.99090066.css",
+    "main.js": "/Agenda-Spa/static/js/main.13e07b17.js",
+    "static/js/787.28cb0dcd.chunk.js": "/Agenda-Spa/static/js/787.28cb0dcd.chunk.js",
+    "static/media/logospaverde.png": "/Agenda-Spa/static/media/logospaverde.6e2d8a04ab7ead90d937.png",
+    "index.html": "/Agenda-Spa/index.html",
+    "main.99090066.css.map": "/Agenda-Spa/static/css/main.99090066.css.map",
+    "main.13e07b17.js.map": "/Agenda-Spa/static/js/main.13e07b17.js.map",
+    "787.28cb0dcd.chunk.js.map": "/Agenda-Spa/static/js/787.28cb0dcd.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.99090066.css",
+    "static/js/main.13e07b17.js"
+  ]
+}
