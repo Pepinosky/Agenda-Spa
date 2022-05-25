@@ -10,7 +10,7 @@ function App() {
    <div className="flex justify-center min-h-screen bg-white text-black ">
     <NavBar /> 
     <Switch >
-       <Route path="/" component={Reservation} />
+       <Route path="/reservation" component={Reservation} />
        <Route component={NotFound} />
      </Switch>
    </div>

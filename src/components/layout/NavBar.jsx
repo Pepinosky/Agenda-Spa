@@ -5,7 +5,7 @@ const NavBar = () => {
     
     let Links = [
         {name: "Inicio", link:"/"},
-        {name: "Reservar", link:"/"},
+        {name: "Reservar", link:"/Reservar"},
         {name: "Cancelar", link:"/"},
         {name: "Estado de reserva", link:"/"},
         
