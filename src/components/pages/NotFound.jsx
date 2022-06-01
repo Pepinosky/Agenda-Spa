@@ -1,7 +1,7 @@
 export default function NotFound(){
     return (
         <div className="App">
-            <h1 class="text-bold">not found</h1>
+            <h1 class="">not found</h1>
         </div>
     )
 }
