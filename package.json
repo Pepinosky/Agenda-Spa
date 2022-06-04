@@ -11,6 +11,7 @@
     "flowbite": "^1.4.7",
     "gh-pages": "^4.0.0",
     "jwt-decode": "^3.1.2",
+    "little-state-machine": "^4.4.1",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-hook-form": "^7.31.3",
