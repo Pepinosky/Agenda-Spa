@@ -1,16 +1,17 @@
-
+import Form from './form';
 import React, { useEffect, useState, Fragment } from 'react'
 import axios from "axios"
+import { useForm } from "react-hook-form";
 export default function Preferences({isOpen, setIsOpen}) {
+    const { register, getValues } = useForm();
+    const [idReserva, setIdReserva] = useState("")
     const [services, setServices] = useState([])
- 
     const [date, setDate] = useState("")
     const [srvName, setSvrName] = useState("")
     const [reservations, setReservations] = useState([])
     const [visibility,setVisibility]=useState("invisible");
-    const token = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluaXN0cmFkb3JAZW1haWwuY29tIiwicGFzc3dvcmQiOiIxMjMiLCJpYXQiOjE2NTQ0NzIxMDksImV4cCI6MTY1NDQ3NTcwOX0.IlyLjETTJ6FU5pPW_eRwr3j91nvP-tYb_azSyvkr7kg"
-    
-    
+    const token = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluaXN0cmFkb3JAZW1haWwuY29tIiwicGFzc3dvcmQiOiIxMjMiLCJpYXQiOjE2NTQ0ODY3OTEsImV4cCI6MTY1NDQ5MDM5MX0.Xa0FPRBX-te-7x0v_4mGM9YNDOG0UfCcA7KWq8MuWGc"
+  
     useEffect(() => {
         axios.get("http://localhost:8000/servicios", {
           headers: {
@@ -21,6 +22,7 @@ export default function Preferences({isOpen, setIsOpen}) {
         })
       }, [token])
 
+    
       useEffect(() => { 
         axios.get("http://localhost:8000/reservas", {
           headers: {
@@ -28,12 +30,20 @@ export default function Preferences({isOpen, setIsOpen}) {
           },
           params:{
             nombre_servicio: srvName,
-            fecha: date
+            fecha: date,        
           }
         }).then(res => {
           setReservations(res.data)
         })
       }, [token, srvName, date])
+
+      const onClickButton = async (values) => {
+        setIdReserva(values.id) 
+        console.log(idReserva)
+        
+    }
+
+
 
     return(
         <>
@@ -41,8 +51,10 @@ export default function Preferences({isOpen, setIsOpen}) {
                       <label className='' > 
                         <span className=''>Dia</span>
                         <br />
-                        <input className='mt-4 form-input cursor-pointer' type="date" name='fecha' 
-                        onChange={(event)=> {setDate(event.target.value)}} 
+                        <input className='mt-4 form-input cursor-pointer' type="date"   
+                         {...register('fecha', { 
+                          onChange: (event)=> setDate(event.target.value)
+                        })}
                         />
                         
                         </label>
@@ -51,10 +63,15 @@ export default function Preferences({isOpen, setIsOpen}) {
                           <span>Servicio</span>
                           <br />
                         <select className='form-select text-center mt-4  w-96 cursor-pointer' name='servicio' 
-                        onChange={(event)=> [setVisibility("visible"), setSvrName(event.target.value)]}
+                    
+                       {...register('servicio', { 
+                          onChange: (event)=> [setVisibility("visible"), setSvrName(event.target.value)]
+                        })}
                         >
+                           <option>seleccionar</option>
                             {                              
                               services.map(service => (
+                               
                                 <option  className='' key={service.id} value={service.nombre }>{service.nombre}</option>
                               ))                            
                             }
@@ -66,9 +83,10 @@ export default function Preferences({isOpen, setIsOpen}) {
                         <h3 className='pt-4 '> Selecciona el horario de tu preferencia</h3>
                         {                       
                          reservations.map( reservation   => (                                             
-                              <label className='p-2 cursor-pointer '> 
-                              <input type="radio" key={reservation.id} className='form-radio checked:bg-lime-900 ' name="hora" 
-                              value={reservation.id}                             
+                              <label className='p-2 cursor-pointer ' key={reservation.id}> 
+                              <input type="radio"  className='form-radio checked:bg-lime-900 ' 
+                              value={reservation.id}
+                              {...register('id')}                             
                               /> 
                               {reservation.hora} 
                               disponible:{reservation.cupos}   
@@ -77,7 +95,7 @@ export default function Preferences({isOpen, setIsOpen}) {
                           ))
                         }                                           
                          <button  
-                         onClick={() => setIsOpen(true)}
+                         onClick={()=> [onClickButton(getValues()), setIsOpen(true) ]}
 
                          className=' text-center border-2 border-black rounded-md hover:bg-black hover:text-lime-500 hover:p-4 duration-500 mt-12'>
                          Realizar reserva</button>                        

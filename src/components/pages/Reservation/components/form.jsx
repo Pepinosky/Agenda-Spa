@@ -2,7 +2,7 @@ import React, { useEffect, useState, Fragment } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { useForm } from "react-hook-form";
 
-export default function Form({isOpen, setIsOpen}){
+export default function Form({isOpen, setIsOpen}, props){
    
     const { register, handleSubmit } = useForm();
     
@@ -19,16 +19,21 @@ export default function Form({isOpen, setIsOpen}){
     
     <>
     <form className='flex flex-col items-center' onSubmit={handleSubmit(onSubmit)} >
-                  <Dialog open={isOpen} onClose={() => setIsOpen(false)}  className="relative z-10">  
-                  <Dialog.Panel> 
+                  <Dialog open={isOpen} onClose={() => setIsOpen(false)}  className="relative z-10">
                   
-                  <div className={`flex flex-col  items-center border-solid border-2 py-6 bg-slate-400 w-5/6 mx-auto `}>
-                  <Dialog.Title>Ingresa tus datos</Dialog.Title>
+                   
+                  <Dialog.Panel> 
+                  <div className={`flex flex-col fixed items-center border-solid border-2 py-6 bg-slate-100 w-5/6 mx-auto top-60 left-[-10px] right-[-10px]  `}>
+                  <Dialog.Title>Ingresa tus datos</Dialog.Title> 
                   <button 
                   onClick={() => setIsOpen(false)} 
                   className="border-2"> 
                     X</button>
-
+                    
+                    <div>
+                        detalles
+                        <p>fecha: {props.idReserva} </p>
+                    </div>
                     <div className="flex flex-col ">
                     <label htmlFor="email" className="font-bold mx-16">
                         Email

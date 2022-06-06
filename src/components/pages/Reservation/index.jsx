@@ -4,14 +4,9 @@ import Form from './components/form';
 
 const Reservation = () => {
   const [isOpen, setIsOpen] = useState(false)
-  console.log(isOpen)
   
   
-    
-
-
   
-      
   return (
     <div className='w-full h-full py-44 px-4'>
         <div className=' mx-auto  '>         
@@ -21,10 +16,14 @@ const Reservation = () => {
             <Preferences
               isOpen={isOpen}
               setIsOpen={setIsOpen}
+              
+             
             />
+            
             <Form 
               isOpen={isOpen}
               setIsOpen={setIsOpen}
+              
             />                             
           </div>
         </div>
