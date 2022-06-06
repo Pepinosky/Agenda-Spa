@@ -3,8 +3,8 @@ import Preferences from './components/preferences';
 import Form from './components/form';
 
 const Reservation = () => {
-  
-  
+  const [isOpen, setIsOpen] = useState(false)
+  console.log(isOpen)
   
   
     
@@ -18,13 +18,14 @@ const Reservation = () => {
           <div className='md:flex  flex-col items-center content-center justify-center p-1 text-center sm:text-left'>
             <h1 className=' md:text-4xl sm:text-3xl text-2xl font-bold  '>RESERVA DE HORAS</h1>
             <h6 className='md:text-3xl sm:text-2xl font-light '>Selecciona segun tus preferencias</h6>
-            <Preferences/>
-            <Form />
-                
-
-
-                          
-                
+            <Preferences
+              isOpen={isOpen}
+              setIsOpen={setIsOpen}
+            />
+            <Form 
+              isOpen={isOpen}
+              setIsOpen={setIsOpen}
+            />                             
           </div>
         </div>
       </div>

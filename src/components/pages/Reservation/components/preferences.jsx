@@ -1,14 +1,14 @@
 
 import React, { useEffect, useState, Fragment } from 'react'
 import axios from "axios"
-export default function Preferences() {
+export default function Preferences({isOpen, setIsOpen}) {
     const [services, setServices] = useState([])
-    const [isOpen, setIsOpen] = useState(false)
+ 
     const [date, setDate] = useState("")
     const [srvName, setSvrName] = useState("")
     const [reservations, setReservations] = useState([])
     const [visibility,setVisibility]=useState("invisible");
-    const token = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluaXN0cmFkb3JAZW1haWwuY29tIiwicGFzc3dvcmQiOiIxMjMiLCJpYXQiOjE2NTQzMTI3OTcsImV4cCI6MTY1NDMxNjM5N30.UQODMUBPHQpgRlJ5KRdhNE4pU8dHm6szasooaYKwaZQ"
+    const token = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluaXN0cmFkb3JAZW1haWwuY29tIiwicGFzc3dvcmQiOiIxMjMiLCJpYXQiOjE2NTQ0NzIxMDksImV4cCI6MTY1NDQ3NTcwOX0.IlyLjETTJ6FU5pPW_eRwr3j91nvP-tYb_azSyvkr7kg"
     
     
     useEffect(() => {
@@ -52,7 +52,6 @@ export default function Preferences() {
                           <br />
                         <select className='form-select text-center mt-4  w-96 cursor-pointer' name='servicio' 
                         onChange={(event)=> [setVisibility("visible"), setSvrName(event.target.value)]}
-                       
                         >
                             {                              
                               services.map(service => (
