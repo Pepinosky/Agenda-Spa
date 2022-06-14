@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .custom-date {
+        @apply form-input mt-4 mr-40 cursor-pointer;
+    }
+    .custom-select {
+        @apply form-select mt-4 w-96  cursor-pointer text-center;
+    }
+}

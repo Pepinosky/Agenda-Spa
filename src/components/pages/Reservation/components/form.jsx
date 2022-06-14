@@ -1,83 +1,105 @@
-import React, { useEffect, useState, Fragment } from 'react'
+import React, { useEffect, useState, Fragment, useContext } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
-import { useForm } from "react-hook-form";
+import { useForm } from 'react-hook-form'
+import Button from '../../../layout/Button'
+import Input from '../../../layout/Input'
 
-export default function Form({isOpen, setIsOpen}, props){
-   
-    const { register, handleSubmit } = useForm();
-    
-    
-    
-    const onSubmit = async (data) => {
-  
-        console.log(data)
-        
-    }
-    
-    
-    return(
-    
-    <>
-    <form className='flex flex-col items-center' onSubmit={handleSubmit(onSubmit)} >
-                  <Dialog open={isOpen} onClose={() => setIsOpen(false)}  className="relative z-10">
-                  
-                   
-                  <Dialog.Panel> 
-                  <div className={`flex flex-col fixed items-center border-solid border-2 py-6 bg-slate-100 w-5/6 mx-auto top-60 left-[-10px] right-[-10px]  `}>
-                  <Dialog.Title>Ingresa tus datos</Dialog.Title> 
-                  <button 
-                  onClick={() => setIsOpen(false)} 
-                  className="border-2"> 
-                    X</button>
-                    
-                    <div>
-                        detalles
-                        <p>fecha: {props.idReserva} </p>
-                    </div>
-                    <div className="flex flex-col ">
-                    <label htmlFor="email" className="font-bold mx-16">
-                        Email
-                        <input 
-                        type="email" id="email"  
-                        className="border-solid border-2 px-2 py-1"  
-                        {...register('email')} 
+export default function Form({ isOpen, setIsOpen, formData, setFormData }) {
+    const { register, handleSubmit, getValues } = useForm({
+        defaultValues: {
+            correo: 'nilson@email.com',
+            nombre: 'nilson',
+            apellido: 'nilson',
+            telefono: '123',
+        },
+    })
+
+    return (
+        <>
+            {/* <form onSubmit={handleSubmit(onSubmit)}> */}
+            <Dialog
+                open={isOpen}
+                onClose={() => setIsOpen(false)}
+                className="relative z-10"
+            >
+                <Dialog.Panel>
+                    <div
+                        className={`fixed top-60 left-[-10px] right-[-10px] mx-auto flex w-5/6 flex-col items-center border-2 border-solid bg-slate-100 py-6  `}
+                    >
+                        <button
+                            onClick={() => setIsOpen(false)}
+                            className="h-6 w-6"
+                        >
+                            <ion-icon
+                                name="close-circle"
+                                size="large"
+                            ></ion-icon>
+                        </button>
+                        <Dialog.Title className="text-3xl">
+                            Ingresa tus datos
+                        </Dialog.Title>
+                        <Dialog.Description className="m-2 text-xl">
+                            Numero de reserva: {formData.numero_reserva}
+                            <br />
+                            fecha: {formData.fecha}
+                            <br />
+                            hora: {formData.hora}
+                            <br />
+                            servicio: {formData.servicio}
+                        </Dialog.Description>
+                        <Input
+                            labelText={'correo'}
+                            type={'email'}
+                            onChange={(event) =>
+                                setFormData({
+                                    ...formData,
+                                    correo: event.target.value,
+                                })
+                            }
                         />
-                    </label>
-                    </div>
 
-                    <div className="flex flex-col ">
-                    <label htmlFor="nombre" className="font-bold mx-16">
-                        nombre
-                        <input
-                         type="text" 
-                         id="nombre" 
-                         className="border-solid border-2 px-2 py-1" 
-                         {...register('nombre')}/>
-                    </label>
-                    </div>
+                        <Input
+                            labelText={'nombre'}
+                            type={'text'}
+                            onChange={(event) =>
+                                setFormData({
+                                    ...formData,
+                                    nombre: event.target.value,
+                                })
+                            }
+                        />
 
-                    <div className="flex flex-col ">
-                    <label htmlFor="apellido" className="font-bold mx-16">
-                        apellido
-                        <input type="text" id="apellido" className="border-solid border-2 px-2 py-1" 
-                         {...register('apellido')}/>
-                    </label>
+                        <Input
+                            labelText={'apellido'}
+                            type={'text'}
+                            onChange={(event) =>
+                                setFormData({
+                                    ...formData,
+                                    apellido: event.target.value,
+                                })
+                            }
+                        />
+
+                        <Input
+                            labelText={'telefono'}
+                            type={'text'}
+                            onChange={(event) =>
+                                setFormData({
+                                    ...formData,
+                                    telefono: event.target.value,
+                                })
+                            }
+                        />
+                        <Button
+                            text={'confirmar reserva'}
+                            onClick={() => {
+                                console.log(formData)
+                            }}
+                        />
                     </div>
-                    <div className="flex flex-col ">
-                    <label htmlFor="telefono" className="font-bold mx-16">
-                        telefono
-                        <input type="text" id="telefono" className="border-solid border-2 px-2 py-1" 
-                         {...register('telefono')}/>
-                    </label>
-                    </div>
-                    <button type='submit' className=' w-24 text-center border-2 border-black rounded-md hover:bg-black hover:text-lime-500 hover:p-4 duration-500 mt-10 '  > confirmar reserva</button>
-                    
-                </div>
                 </Dialog.Panel>
-                </Dialog>
-                
-                 </form>   
-    
-    </>
+            </Dialog>
+            {/* </form> */}
+        </>
     )
 }
