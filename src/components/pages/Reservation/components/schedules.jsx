@@ -16,14 +16,6 @@ export default function Schedules({
     const [reservations, setReservations] = useState([])
     const token =
         'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluaXN0cmFkb3JAZW1haWwuY29tIiwicGFzc3dvcmQiOiIxMjMiLCJpYXQiOjE2NTUxNjU2NTksImV4cCI6MTY1NTE4MDA1OX0.8e4fx19SnNm1XsDIP85T8L6iZ6OVZQ5qnO3G-khZQqM'
-
-    // const handleClick = (e) => {
-    //     console.log(selected)
-    //     console.log(selected)
-    //     setFormData({ ...formData, numero_reserva: e.target.value })
-    //     setIsOpen(true)
-    // }
-
     useEffect(() => {
         axios
             .get('http://localhost:8000/reservas', {

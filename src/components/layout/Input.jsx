@@ -9,7 +9,7 @@ export default function Input({ type, labelText, onChange }) {
                     {labelText}
                     <input
                         type={type}
-                        className="cursor-pointer border-2 border-solid px-2 py-1"
+                        className="cursor-pointer border-2 border-solid px-2  py-1"
                         onChange={onChange}
                     />
                 </label>
