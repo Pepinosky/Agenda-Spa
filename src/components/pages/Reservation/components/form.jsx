@@ -16,7 +16,6 @@ export default function Form({ isOpen, setIsOpen, formData, setFormData }) {
 
     return (
         <>
-            {/* <form onSubmit={handleSubmit(onSubmit)}> */}
             <Dialog
                 open={isOpen}
                 onClose={() => setIsOpen(false)}
@@ -99,7 +98,6 @@ export default function Form({ isOpen, setIsOpen, formData, setFormData }) {
                     </div>
                 </Dialog.Panel>
             </Dialog>
-            {/* </form> */}
         </>
     )
 }

@@ -1,4 +1,4 @@
-export default function Input({ type, labelText, onChange }) {
+export default function Input({ type, labelText, onChange, placeholder }) {
     return (
         <>
             <div className="flex  flex-col">
@@ -11,6 +11,7 @@ export default function Input({ type, labelText, onChange }) {
                         type={type}
                         className="cursor-pointer border-2 border-solid px-2  py-1"
                         onChange={onChange}
+                        placeholder={placeholder}
                     />
                 </label>
             </div>

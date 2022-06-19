@@ -8,7 +8,6 @@ import SubTitle from '../../layout/SubTitle'
 export default function Reservation() {
     const [isOpen, setIsOpen] = useState(false)
     const [visibility, setVisibility] = useState('invisible')
-
     const [formData, setFormData] = useState({
         numero_reserva: '',
         hora: '',
