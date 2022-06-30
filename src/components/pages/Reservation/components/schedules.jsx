@@ -1,36 +1,36 @@
 import axios from 'axios'
-import React, { useEffect, useState, Fragment, useContext } from 'react'
+import React, { useEffect, useState, Fragment } from 'react'
+import SubTitle from '../../../layout/SubTitle'
 import Button from '../../../layout/Button'
-import { RadioGroup } from '@headlessui/react'
+
+import { Input } from '../../../common/Input'
 
 export default function Schedules({
     isOpen,
     setIsOpen,
     visibility,
     setVisibility,
-    formData,
-    setFormData,
+    getValues,
     fecha,
     servicio,
+    register,
 }) {
     const [reservations, setReservations] = useState([])
-    const token =
-        'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluaXN0cmFkb3JAZW1haWwuY29tIiwicGFzc3dvcmQiOiIxMjMiLCJpYXQiOjE2NTUxNjU2NTksImV4cCI6MTY1NTE4MDA1OX0.8e4fx19SnNm1XsDIP85T8L6iZ6OVZQ5qnO3G-khZQqM'
+
     useEffect(() => {
         axios
-            .get('http://localhost:8000/reservas', {
-                headers: {
-                    Authorization: token,
-                },
+            .get('https://app-apirest2.herokuapp.com/reserva', {
                 params: {
                     nombre_servicio: servicio,
                     fecha: fecha,
                 },
             })
             .then((res) => {
-                setReservations(res.data)
+                console.log(res.data.items.docs)
+                setReservations(res.data.items.docs)
             })
-    }, [token, fecha, servicio])
+    }, [fecha, servicio])
+
     return (
         <>
             <div
@@ -40,21 +40,17 @@ export default function Schedules({
                     {' '}
                     Selecciona el horario de tu preferencia
                 </h3>
+                <SubTitle text={'Selecciona el horario de tu preferencia'} />
 
                 {reservations.map((reservation) => (
                     <label className="cursor-pointer p-2 " key={reservation.id}>
-                        <input
-                            type="radio"
-                            name="radio"
-                            className="form-radio checked:bg-lime-900 "
-                            value={reservation.id}
-                            onChange={(event) =>
-                                setFormData({
-                                    ...formData,
-                                    hora: reservation.hora,
-                                    numero_reserva: event.target.value,
-                                })
-                            }
+                        <Input
+                            type={'radio'}
+                            name={'hora'}
+                            inputClass={'form-radio checked:bg-lime-900 '}
+                            value={reservation.hora}
+                            register={register}
+                            key={reservation.id}
                         />
                         {reservation.hora}
                         disponible:{reservation.cupos}

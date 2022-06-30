@@ -1,0 +1,55 @@
+{
+    "servicios": [
+        {
+            "id": 1,
+            "nombre": "servicio1"
+        },
+        {
+            "id": 2,
+            "nombre": "servicio2"
+        },
+        {
+            "id": 3,
+            "nombre": "servicio3"
+        }
+    ],
+    "reservas": [
+        {
+            "id": 1,
+            "nombre_servicio": "servicio1",
+            "fecha": "2022-05-30",
+            "hora": "08:00",
+            "cupos": "2",
+            "sobrecupos": "3"
+        },
+        {
+            "id": 2,
+            "nombre_servicio": "servicio1",
+            "fecha": "2022-05-30",
+            "hora": "09:00",
+            "cupos": "1",
+            "sobrecupos": "3"
+        },
+        {
+            "id": 3,
+            "nombre_servicio": "servicio3",
+            "fecha": "2022-05-31",
+            "hora": "10:00",
+            "cupos": "3",
+            "sobrecupos": "3"
+        }
+    ],
+    "reserva_creada": [
+        {
+            "id": 1,
+            "numero_reserva": "2",
+            " hora": "09:00",
+            "fecha": "2022-05-31",
+            "servicio": "servicio1",
+            "nombre": "alonso",
+            "apellido": "astorga",
+            "correo": "email@email.com",
+            "telefono": "1234453"
+        }
+    ]
+}

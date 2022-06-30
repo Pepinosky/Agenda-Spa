@@ -1,5 +1,5 @@
 import Button from '../../../layout/Button'
-import Input from '../../../layout/Input'
+import { Input } from '../../../common/Input'
 import SubTitle from '../../../layout/SubTitle'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
@@ -28,12 +28,12 @@ export default function Confirmation({ visibility, numero_reserva }) {
                 className={`flex flex-col text-center text-xl font-medium ${visibility} `}
             >
                 <SubTitle text={'Reserva: '} />
-                <Input labelText={' Fecha'} placeholder={reservation.fecha} />
+                {/* <Input labelText={' Fecha'} placeholder={reservation.fecha} />
                 <Input labelText={' Hora'} placeholder={reservation.hora} />
                 <Input
                     labelText={' Servicio'}
                     placeholder={reservation.servicio}
-                />
+                /> */}
             </div>
         </>
     )

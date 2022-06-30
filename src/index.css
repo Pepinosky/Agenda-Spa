@@ -4,9 +4,18 @@
 
 @layer components {
     .custom-date {
-        @apply form-input mt-4 mr-40 cursor-pointer;
+        @apply form-input mt-4 mr-40 flex cursor-pointer;
     }
     .custom-select {
-        @apply form-select mt-4 w-96  cursor-pointer text-center;
+        @apply form-select mt-4 flex  w-96 cursor-pointer text-center;
+    }
+    .default-input {
+        @apply cursor-pointer border-2 border-solid px-2  py-1;
+    }
+    .col-div {
+        @apply flex  flex-col;
+    }
+    .col-label {
+        @apply mx-16 flex  flex-col font-bold;
     }
 }
