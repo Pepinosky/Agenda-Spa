@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Input } from '../../common/Input'
 import Form from './components/form'
 import Schedules from './components/schedules'
