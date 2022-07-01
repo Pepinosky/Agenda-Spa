@@ -34,12 +34,8 @@ export default function Schedules({
     return (
         <>
             <div
-                className={`flex flex-col text-center text-xl font-medium ${visibility} `}
+                className={`mt-2 flex flex-col space-y-2 text-center text-xl font-medium ${visibility} `}
             >
-                <h3 className="pt-4 ">
-                    {' '}
-                    Selecciona el horario de tu preferencia
-                </h3>
                 <SubTitle text={'Selecciona el horario de tu preferencia'} />
 
                 {reservations.map((reservation) => (
@@ -59,7 +55,7 @@ export default function Schedules({
 
                 <Button
                     text={'Realizar reserva'}
-                    type={'button'}
+                    type={'submit'}
                     className={'text-xl'}
                     onClick={() => setIsOpen(true)}
                 />

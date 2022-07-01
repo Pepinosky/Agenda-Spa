@@ -12,16 +12,6 @@ import { useForm } from 'react-hook-form'
 export default function Reservation() {
     const [isOpen, setIsOpen] = useState(false)
     const [visibility, setVisibility] = useState('invisible')
-    const [formData, setFormData] = useState({
-        numero_reserva: '',
-        hora: '',
-        fecha: '',
-        servicio: '',
-        nombre: '',
-        apellido: '',
-        correo: '',
-        telefono: '',
-    })
     const { register, handleSubmit, getValues, setValue } = useForm({
         defaultValues: {
             numero_reserva: '',
@@ -46,7 +36,7 @@ export default function Reservation() {
                     <Title text={'RESERVA DE HORAS'} />
                     <SubTitle text={'Selecciona segun tus preferencias'} />
                     <form onSubmit={handleSubmit(onSubmit)}>
-                        <div className="m-6  flex w-full flex-col content-center items-center  justify-center ">
+                        <div className=" m-8 flex flex-wrap content-center justify-center  space-x-10 md:w-auto md:flex-wrap">
                             <Input
                                 inputClass={'custom-date'}
                                 type={'date'}
@@ -54,33 +44,36 @@ export default function Reservation() {
                                 register={register}
                                 name={'fecha'}
                             />
+
                             <ServicesList
                                 register={register}
                                 visibility={visibility}
                                 setVisibility={setVisibility}
                             />
-                            <Schedules
-                                visibility={visibility}
-                                setVisibility={setVisibility}
-                                isOpen={isOpen}
-                                getValues={getValues}
-                                setIsOpen={setIsOpen}
-                                servicio={getValues('servicio')}
-                                fecha={getValues('fecha')}
-                                register={register}
-                            />
-                            <Button
+                        </div>
+
+                        <Schedules
+                            visibility={visibility}
+                            setVisibility={setVisibility}
+                            isOpen={isOpen}
+                            getValues={getValues}
+                            setIsOpen={setIsOpen}
+                            servicio={getValues('servicio')}
+                            fecha={getValues('fecha')}
+                            register={register}
+                        />
+
+                        {/* <Button
                                 text={'buscar reserva'}
                                 className={'flex'}
-                            />
-                            {/* <Form
+                            /> */}
+                        {/* <Form
                             isOpen={isOpen}
                             setIsOpen={setIsOpen}
                             formData={formData}
                             setFormData={setFormData}
                         /> */}
-                            <input type="submit" />
-                        </div>
+                        {/* <input type="submit" /> */}
                     </form>
                 </div>
             </div>
