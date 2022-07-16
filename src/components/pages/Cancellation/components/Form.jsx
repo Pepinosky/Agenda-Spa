@@ -1,4 +1,4 @@
-import SubTitle from '../../../layout/SubTitle'
+import SubTitle from '../../../../../../admin-frontend/src/components/layout/Subtitle'
 import { Input } from '../../../common/Input'
 import Button from '../../../layout/Button'
 export default function Form({ register }) {

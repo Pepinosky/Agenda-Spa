@@ -2,7 +2,15 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 import axios from 'axios'
 import { Select } from '../../../common/Select'
-const ServicesList = ({ register, setVisibility, visibility }) => {
+const ServicesList = ({
+    register,
+    setVisibility,
+    visibility,
+    selected,
+    setSelected,
+    errors,
+    onChange,
+}) => {
     const [services, setServices] = useState([])
 
     useEffect(() => {
@@ -11,6 +19,10 @@ const ServicesList = ({ register, setVisibility, visibility }) => {
             setServices(res.data.items.docs)
         })
     }, [])
+    // services.map((value) =>
+    //     value.nombre === 'servicio1' ? console.log(value) : console.log('nada')
+    // )
+
     return (
         <>
             <Select
@@ -19,9 +31,10 @@ const ServicesList = ({ register, setVisibility, visibility }) => {
                 name={'servicio'}
                 label={'Servicio'}
                 options={services}
-                onChange={(e) => {
-                    setVisibility('visible')
-                }}
+                onChange={onChange}
+                // onChange={(e) => {
+                //     setSelected(e.target.value)
+                // }}
             />
         </>
     )

@@ -6,18 +6,22 @@ export const Input = ({
     labelClass,
     type,
     register,
-    error,
+    errors,
+    message,
     label,
     name,
+    value,
     onChange,
+    key,
 }) => {
     return (
         <>
             <div className={divClass}>
-                <label className={labelClass}>
+                <label className={labelClass} key={key}>
                     {label}
                     <input
                         type={type}
+                        value={value}
                         className={inputClass}
                         {...register(name)}
                         onChange={onChange}
